@@ -1,0 +1,68 @@
+---
+title: "Quiz5"
+author: "Yaniv Bronshtein"
+date: "10/12/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Basic sigmoid
+```{r}
+w <- c(0,0)
+b <- 0
+x <- c(2,3)
+
+Z <- w%*%x + b
+
+sigmoid <- function(Z, y){
+  if(y==0){
+    return(1 - (1/(1+exp(-Z))))
+  }else{
+    return(1/(1+exp(-Z)))
+  }
+}
+
+
+loss <- function(sigmoid_res,y){
+  return(-(y*log(sigmoid_res) + (1-y)*log(1-sigmoid_res)))
+}
+sigmoid_res <- sigmoid(Z,y=1)
+
+my_loss <- loss(sigmoid_res,y=1)
+
+my_loss
+
+
+sigmoid_res2 <- sigmoid(Z, y=0)
+my_loss2 <- loss(sigmoid_res, y=0)
+my_loss2
+
+```
+
+
+# Softmax
+```{r}
+softmax <- function(Z){
+  denom <- sum(exp(Z))
+  res <- exp(Z)/denom
+  return(res)
+}
+```
+
+
+# Gradient Descent
+```{r}
+x1 <- 3 #Count of positive Lexicon Words
+x2 <- 2 #Count of negative Lexicon Words
+w1 <- w2 <- b <- 0
+learning_rate <- 0.1
+
+
+sgd <- function(w, r){
+  w_new <- w - r*
+}
+```
